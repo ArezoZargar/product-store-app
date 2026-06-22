@@ -1,0 +1,45 @@
+.light {
+  background: rgba(255, 243, 229);
+  color: rgba(55, 25, 49);
+  min-height: 100vh;
+}
+
+.dark {
+  background: rgba(61, 60, 42);
+  color: rgba(255, 243, 229);
+  min-height: 100vh;
+}
+
+.card-skeleton {
+  height: 280px;
+  border-radius: 10px;
+  background: #eee;
+  padding: 10px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #eee, #ddd, #eee);
+  background-size: 200% 100%;
+  animation: loading 1.2s infinite;
+}
+
+/* .img {
+  height: 150px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.line {
+  height: 12px;
+  margin: 8px 0;
+  border-radius: 6px;
+}
+
+.line.short {
+  width: 60%;
+} */
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
