@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
 import AppRoutes from "./routes/AppRoutes";
-import { useSettings } from "./context/SettingsContext";
+import { useSettings } from "./context/useSettings";
 import { useLocation } from "react-router-dom";
 export default function App() {
   const { state } = useSettings();

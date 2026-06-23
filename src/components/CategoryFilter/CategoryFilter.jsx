@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchCategories } from "../../api/productsApi";
-import { useSettings } from "../../context/SettingsContext";
+import { useSettings } from "../../context/useSettings";
 export default function CategoryFilter() {
   const { dispatch } = useSettings();
   const [categories, setCategories] = useState([]);
