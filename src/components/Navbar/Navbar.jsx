@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useSettings } from "../../context/SettingsContext";
+import { useSettings } from "../../context/useSettings";
 
 export default function Navbar() {
   const navigate = useNavigate();

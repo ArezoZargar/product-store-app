@@ -5,7 +5,7 @@ import { fetchProducts, fetchProductsByCategory } from "../../api/productsApi";
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { useSettings } from "../../context/SettingsContext";
+import { useSettings } from "../../context/useSettings";
 import ProductSkeleton from "../../components/Skeleton/ProductSkeleton";
 
 export default function HomePage() {
@@ -63,11 +63,13 @@ export default function HomePage() {
           List View
         </button>
       </div>
-      <div
-        className={state.view === "grid" ? "products-grid" : "products-list"}
-      >
+      <div>
         {filteredProducts.length > 0 ? (
-          <ProductList products={filteredProducts} isLoading={isLoading} />
+          <ProductList
+            products={filteredProducts}
+            isLoading={isLoading}
+            view={state.view}
+          />
         ) : (
           <div
             style={{

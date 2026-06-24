@@ -1,6 +1,5 @@
-import { createContext, useContext, useReducer } from "react";
-
-const SettingsContext = createContext();
+import { useReducer } from "react";
+import { SettingsContext } from "./settingsContext";
 
 const initialState = {
   theme: "light",
@@ -45,8 +44,4 @@ export function SettingsProvider({ children }) {
       {children}
     </SettingsContext.Provider>
   );
-}
-
-export function useSettings() {
-  return useContext(SettingsContext);
 }

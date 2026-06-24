@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -9,7 +8,7 @@ import { store, persistor } from "./app/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import { SettingsProvider } from "./context/SettingsContext";
+import { SettingsProvider } from "./context/SettingsContext.jsx";
 
 import "./index.css";
 const queryClient = new QueryClient();
