@@ -7,7 +7,7 @@ import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { useSettings } from "../../context/useSettings";
 import ProductSkeleton from "../../components/Skeleton/ProductSkeleton";
-
+import Navbar from "../../components/Navbar/Navbar"
 export default function HomePage() {
   const [page, setPage] = useState(0);
   const { state, dispatch } = useSettings();
@@ -44,11 +44,18 @@ export default function HomePage() {
 
   return (
     <div>
-      <SearchBar query={query} setQuery={setQuery} />
-      <h1>Products</h1>
+      <div className="hero">
+         <Navbar />
+      <div className="hero-overlay">
 
-      {/* Category Filter */}
-      <CategoryFilter />
+        <h1>Discover Amazing Products</h1>
+
+        <SearchBar query={query} setQuery={setQuery} />
+
+        <CategoryFilter />
+
+      </div>
+      </div>
 
       {/* Products */}
       <div style={{ marginBottom: "20px" }}>
