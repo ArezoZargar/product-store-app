@@ -5,6 +5,6 @@ export const useSearchProducts = (query) => {
   return useQuery({
     queryKey: ["search-products", query],
     queryFn: () => searchProducts(query),
-    enabled: !!query, // فقط وقتی تایپ شد اجرا شود
+    enabled: !!query,
   });
 };

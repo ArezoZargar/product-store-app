@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { playSuccessSound } from "../../utils/sound";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function CheckoutPage() {
   const items = useSelector((state) => state.cart.items);
@@ -58,122 +59,134 @@ export default function CheckoutPage() {
 
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  playSuccessSound(); // 🔊 optional sound
-
-  navigate("/success"); // 🎉 go to success page
-};
+    playSuccessSound();
+    navigate("/success");
+  };
 
   return (
-    <div style={{ maxWidth: 600, margin: "auto" }}>
-      <h1>Checkout</h1>
+    <div className="checkout-page">
+      <Navbar />
 
-      {/* STEP 1 */}
-      {step === 1 && (
-        <div>
-          <h2>Shipping Details</h2>
+      <div className="checkout-container">
+        <div className="checkout-form">
+          <h1 className="step-title">Checkout</h1>
 
-          <input
-            name="firstName"
-            placeholder="First Name"
-            value={form.firstName}
-            onChange={handleChange}
-          />
-          {errors.firstName && (
-            <p style={{ color: "red" }}>{errors.firstName}</p>
+          {step === 1 && (
+            <>
+              <h2 className="step-title">Shipping Details</h2>
+
+              <input
+                name="firstName"
+                value={form.firstName}
+                onChange={handleChange}
+                placeholder="First Name"
+              />
+              {errors.firstName && <p className="error">{errors.firstName}</p>}
+
+              <input
+                name="lastName"
+                value={form.lastName}
+                onChange={handleChange}
+                placeholder="Last Name"
+              />
+              {errors.lastName && <p className="error">{errors.lastName}</p>}
+
+              <input
+                placeholder="Email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+              />
+              {errors.email && <p className="error">{errors.email}</p>}
+
+              <input
+                placeholder="Adress"
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+              />
+              {errors.address && <p className="error">{errors.address}</p>}
+
+              <input
+                placeholder="City"
+                name="city"
+                value={form.city}
+                onChange={handleChange}
+              />
+              {errors.city && <p className="error">{errors.city}</p>}
+            </>
           )}
-          <input
-            name="lastName"
-            placeholder="Last Name"
-            value={form.lastName}
-            onChange={handleChange}
-          />
-          {errors.lastName && <p style={{ color: "red" }}>{errors.lastName}</p>}
-          <input
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-          <input
-            name="address"
-            placeholder="Address"
-            value={form.address}
-            onChange={handleChange}
-          />
-          {errors.address && <p style={{ color: "red" }}>{errors.address}</p>}
-          <input
-            name="city"
-            placeholder="City"
-            value={form.city}
-            onChange={handleChange}
-          />
-          {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
-        </div>
-      )}
 
-      {/* STEP 2 */}
-      {step === 2 && (
-        <div>
-          <h2>Payment Details</h2>
+          {step === 2 && (
+            <>
+              <h2 className="step-title">Payment Details</h2>
 
-          <input
-            name="cardNumber"
-            placeholder="Card Number"
-            value={form.cardNumber}
-            onChange={handleChange}
-          />
-          {errors.cardNumber && (
-            <p style={{ color: "red" }}>{errors.cardNumber}</p>
+              <input
+                placeholder="Card Number"
+                name="cardNumber"
+                value={form.cardNumber}
+                onChange={handleChange}
+              />
+              {errors.cardNumber && (
+                <p className="error">{errors.cardNumber}</p>
+              )}
+
+              <input
+                placeholder="Expiry"
+                name="expiry"
+                value={form.expiry}
+                onChange={handleChange}
+              />
+              {errors.expiry && <p className="error">{errors.expiry}</p>}
+
+              <input
+                placeholder="CVV"
+                name="cvv"
+                value={form.cvv}
+                onChange={handleChange}
+              />
+              {errors.cvv && <p className="error">{errors.cvv}</p>}
+            </>
           )}
-          <input
-            name="expiry"
-            placeholder="MM/YY"
-            value={form.expiry}
-            onChange={handleChange}
-          />
-          {errors.expiry && <p style={{ color: "red" }}>{errors.expiry}</p>}
-          <input
-            name="cvv"
-            placeholder="CVV"
-            value={form.cvv}
-            onChange={handleChange}
-          />
-          {errors.cvv && <p style={{ color: "red" }}>{errors.cvv}</p>}
+
+          {step === 3 && (
+            <div className="order-summary">
+              <h2 className="step-title">Order Confirmation</h2>
+
+              <p className="info">
+                {form.firstName} {form.lastName}
+              </p>
+              <p className="info">{form.address}</p>
+              <p className="info">{form.city}</p>
+              <p className="info">{form.email}</p>
+
+              <h3 className="info">Total: ${total.toFixed(2)}</h3>
+            </div>
+          )}
+
+          <div className="checkout-actions">
+            {step > 1 && (
+              <button className="checkout-btn" onClick={prevStep}>
+                Back
+              </button>
+            )}
+
+            {step < 3 && (
+              <button className="checkout-btn" onClick={nextStep}>
+                Next
+              </button>
+            )}
+
+            {step === 3 && (
+              <button className="checkout-btn" onClick={handleSubmit}>
+                Place Order
+              </button>
+            )}
+          </div>
         </div>
-      )}
-
-      {/* STEP 3 */}
-{step === 3 && (
-  <div>
-    <h2>Order Confirmation</h2>
-
-    <h3>Shipping To:</h3>
-    <p>
-      {form.firstName} {form.lastName}
-    </p>
-    <p>{form.address}</p>
-    <p>{form.city} {form.zip}</p>
-    <p>{form.email}</p>
-
-    <h3>Payment Method:</h3>
-    <p>**** **** **** {form.cardNumber.slice(-4)}</p>
-
-    <h3>Total:</h3>
-    <p>${total.toFixed(2)}</p>
-  </div>
-)}
-
-      {/* BUTTONS */}
-      <div style={{ marginTop: 20 }}>
-        {step > 1 && <button onClick={prevStep}>Back</button>}
-
-        {step < 3 && <button onClick={nextStep}>Next</button>}
-
-        {step === 3 && <button onClick={handleSubmit}>Place Order</button>}
       </div>
     </div>
   );

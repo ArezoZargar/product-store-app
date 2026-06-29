@@ -8,60 +8,32 @@ export default function OrderSuccessPage() {
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
-    playSuccessSound(); // 🔊 sound
+    playSuccessSound();
 
     const timer = setTimeout(() => {
-      setShowConfetti(false); // stop confetti after 5 sec
+      setShowConfetti(false);
     }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div style={styles.container}>
-      
-      {showConfetti && <Confetti />} {/* 🎊 animation */}
+    <div className="success-container">
+      {showConfetti && <Confetti />}
 
-      <div style={styles.card}>
-        <div style={styles.icon}>✔️</div>
+      <div className="success-card">
+        <div className="success-icon">✔</div>
 
         <h1>Order Successful!</h1>
-        <p>Your order has been placed 🎉</p>
 
-        <button style={styles.button} onClick={() => navigate("/")}>
+        <p>
+          Thank you for your purchase. Your order has been placed successfully.
+        </p>
+
+        <button className="success-btn" onClick={() => navigate("/")}>
           Back to Home
         </button>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#cac4d1",
-  },
-  card: {
-    textAlign: "center",
-    padding: "40px",
-    background: "white",
-    borderRadius: "15px",
-    animation: "pop 0.5s ease",
-  },
-  icon: {
-    fontSize: "70px",
-    color: "green",
-  },
-  button: {
-    marginTop: "20px",
-    padding: "10px 20px",
-    background: "green",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-};

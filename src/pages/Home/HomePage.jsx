@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts, fetchProductsByCategory } from "../../api/productsApi";
-
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryFilter from "../../components/CategoryFilter/CategoryFilter";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { useSettings } from "../../context/useSettings";
 import ProductSkeleton from "../../components/Skeleton/ProductSkeleton";
-import Navbar from "../../components/Navbar/Navbar"
+import Navbar from "../../components/Navbar/Navbar";
 export default function HomePage() {
   const [page, setPage] = useState(0);
-  const { state, dispatch } = useSettings();
+  const { state } = useSettings();
   const category = state.category;
   const limit = 10;
   const [query, setQuery] = useState("");
@@ -27,8 +26,8 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="products-grid">
-        {Array.from({ length: 10 }).map((_, i) => (
+      <div className="skeleton-grid">
+        {Array.from({ length: 8 }).map((_, i) => (
           <ProductSkeleton key={i} />
         ))}
       </div>
@@ -36,67 +35,46 @@ export default function HomePage() {
   }
 
   if (isError) return <h2>Error loading products</h2>;
-
   const products = data?.products || [];
+
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase()),
   );
-
   return (
-    <div>
+    <div className="home">
       <div className="hero">
-         <Navbar />
-      <div className="hero-overlay">
-
-        <h1>Discover Amazing Products</h1>
-
-        <SearchBar query={query} setQuery={setQuery} />
-
-        <CategoryFilter />
-
+        <Navbar />
+        <div className="hero-overlay">
+          <h1>Discover Amazing Products</h1>
+          <SearchBar query={query} setQuery={setQuery} />
+          <CategoryFilter
+            onChange={(newCategory) => {
+              setCategory(newCategory);
+              setPage(0);
+            }}
+          />
+        </div>
       </div>
-      </div>
 
-      {/* Products */}
-      <div style={{ marginBottom: "20px" }}>
-        <button onClick={() => dispatch({ type: "SET_GRID" })}>
-          Grid View
-        </button>
-
-        <button
-          onClick={() => dispatch({ type: "SET_LIST" })}
-          style={{ marginLeft: "10px" }}
-        >
-          List View
-        </button>
-      </div>
-      <div>
-        {filteredProducts.length > 0 ? (
+      <div className="products-grid">
+        {isLoading ? (
+          Array.from({ length: 8 }).map((_, i) => <ProductSkeleton key={i} />)
+        ) : filteredProducts.length > 0 ? (
           <ProductList
             products={filteredProducts}
             isLoading={isLoading}
             view={state.view}
           />
         ) : (
-          <div
-            style={{
-              width: "100%",
-              textAlign: "center",
-              padding: "50px 0",
-            }}
-          >
+          <div className="empty">
             <h2>No products found</h2>
-
-            <p style={{ color: "gray" }}>
-              Try adjusting your search or filters.
-            </p>
+            <p>Try adjusting your search or filters.</p>
           </div>
         )}
       </div>
 
-      {/* Pagination */}
-      {filteredProducts.length > 0 && (
-        <div style={{ marginTop: "20px" }}>
+      {!isLoading && filteredProducts.length > 0 && (
+        <div className="pagination">
           <button
             onClick={() => setPage((p) => Math.max(p - 1, 0))}
             disabled={page === 0}
@@ -104,7 +82,7 @@ export default function HomePage() {
             Previous
           </button>
 
-          <span style={{ margin: "0 10px" }}>Page {page + 1}</span>
+          <span>Page {page + 1}</span>
 
           <button
             onClick={() => setPage((p) => p + 1)}
@@ -114,7 +92,8 @@ export default function HomePage() {
           </button>
         </div>
       )}
-      {isFetching && <p>Loading new page...</p>}
+
+      {isFetching && <div className="loading-bar">Loading page...</div>}
     </div>
   );
 }

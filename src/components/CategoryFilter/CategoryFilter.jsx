@@ -24,8 +24,9 @@ export default function CategoryFilter() {
   if (loading) return <p>Loading categories...</p>;
 
   return (
-    <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+    <div className="filters">
       <button
+        className="filter-btn"
         onClick={() =>
           dispatch({
             type: "SET_CATEGORY",
@@ -38,6 +39,7 @@ export default function CategoryFilter() {
 
       {categories.map((category) => (
         <button
+          className="filter-btn"
           key={category.slug}
           onClick={() =>
             dispatch({
@@ -45,12 +47,6 @@ export default function CategoryFilter() {
               payload: category.slug,
             })
           }
-          style={{
-            padding: "6px 12px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-            cursor: "pointer",
-          }}
         >
           {category.name}
         </button>
