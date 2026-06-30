@@ -118,7 +118,6 @@ src/
 │
 ├── api/
 ├── app/
-├── assets/
 ├── components/
 ├── context/
 ├── features/
