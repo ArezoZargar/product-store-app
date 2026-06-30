@@ -35,7 +35,8 @@ You can also include a short screen recording demonstrating the application.
 * Skeleton Loading
 * Toast Notifications
 * Responsive Design (Mobile, Tablet, Desktop)
-
+* Save to Local Storage
+* Sound with Toast Notifications
 ---
 
 ## 🛠️ Technologies Used
@@ -116,6 +117,11 @@ Example:
 
 
 * Mobile Responsive View
+<img width="1170" height="9882" alt="localhost_5173_products_7(iPhone 12 Pro)" src="https://github.com/user-attachments/assets/7fcfa381-0f5f-4fec-bf42-aab263a00e1e" />
+<img width="1170" height="9882" alt="localhost_5173_products_7(iPhone 12 Pro) (1)" src="https://github.com/user-attachments/assets/49b08c6d-b2a1-47e5-a154-11bfdd5cfac0" />
+<img width="1170" height="13617" alt="localhost_5173_products_7(iPhone 12 Pro) (2)" src="https://github.com/user-attachments/assets/4e01e4a0-6b2d-46a7-a497-1493533dfa6b" />
+<img width="750" height="1742" alt="localhost_5173_products_7" src="https://github.com/user-attachments/assets/2cc991f8-f5a4-4c07-bf08-29f91a730ec8" />
+<img width="750" height="1192" alt="localhost_5173_products_7 (1)" src="https://github.com/user-attachments/assets/980e4a69-f12d-43b2-9ee4-56b1f0eede55" />
 
 ---
 
