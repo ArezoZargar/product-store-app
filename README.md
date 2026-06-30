@@ -1,83 +1,157 @@
 # 🛍️ Product Store App
 
-## 📖 Description
+📖 Description
 
-Product Store App is a responsive e-commerce web application built with React. It allows users to browse products, search and filter items, view product details, manage a shopping cart, and complete a simple checkout process.
+A modern and responsive e-commerce web application built with React.
 
-This project was created to demonstrate the use of Context API, useReducer, Redux Toolkit, and React Query in a real-world React application.
+This project allows users to browse products, search and filter items, view product details, manage a shopping cart, and complete a checkout process.
 
----
-## 📹 Demo
-
-(Optional)
-
-You can also include a short screen recording demonstrating the application.
+The main purpose of this project is to demonstrate the proper use of Context API + useReducer, Redux Toolkit, and React Query by using each one for the appropriate type of state.
 
 ---
-
-## ✨ Features
-
-* Browse products from a public API
-* Product Details page
-* Search products
-* Filter products by category
-* Grid View / List View
-* Dark Mode / Light Mode
-* Shopping Cart
-* Add products to cart
-* Remove products from cart
-* Increase / Decrease quantity
-* Clear cart
-* Calculate total items and total price
-* Multi-step Checkout
-* Order Success page
-* Pagination
-* Skeleton Loading
-* Toast Notifications
-* Responsive Design (Mobile, Tablet, Desktop)
-* Save to Local Storage
-* Sound with Toast Notifications
----
-
-## 🛠️ Technologies Used
-
-* React
-* Vite
-* React Router DOM
-* Context API
-* useReducer
-* Redux Toolkit
-* React Query (TanStack Query)
-* CSS3
-* React Icons
-* React Toastify
+🎥 Demo
+https://youtu.be/JZrYTrYf6pY?si=A3borTFkcdcM4MNB
 
 ---
 
-## 🚀 Getting Started
+🚀 Features
+Product Features
+Browse products from DummyJSON API
+View product details
+Search products with debounce
+Filter products by category
+Pagination
+Skeleton loading
+Loading and error handling
+Save to local Storage
+Shopping Cart
+Add products to cart
+Remove products
+Increase quantity
+Decrease quantity
+Clear cart
+Cart badge
+Total items calculation
+Total price calculation
+Cart persistence using Redux Persist
+Settings
+Dark / Light Mode
+Grid / List View
+Selected Category
+User Experience
+Responsive design
+Hero section
+Toast notifications
+Sound effects
+Checkout page
+Order success page
+Empty search state
+Modern UI with animations and hover effects
+---
+🛠️ Technologies & Libraries
+React
+Vite
+React Router DOM
+Redux Toolkit
+React Redux
+Redux Persist
+React Query (@tanstack/react-query)
+Context API
+useReducer
+Axios
+React Toastify
+CSS3
 
-### 1. Clone the repository
-product-store-app 
+---
+🧠 State Management
+Context API + useReducer
 
-### 2. Install dependencies
+Used for application settings:
 
-```bash
+Theme (Dark / Light)
+Grid / List View
+Selected Category
+Redux Toolkit
+
+Used for global cart management:
+
+Add items
+Remove items
+Increase quantity
+Decrease quantity
+Clear cart
+Total items
+Total price
+React Query
+
+Used for server state:
+
+Fetch products
+Fetch product details
+Category data
+Pagination
+Query caching
+Loading & error states
+
+---
+# 📡 API
+
+This project uses the **DummyJSON API** to fetch product data.
+
+Data used in this project includes:
+
+* Product list
+* Product details
+* Product categories
+* Product search
+
+API Website:
+
+https://dummyjson.com
+
+
+---
+📁 Project Structure
+src
+│
+├── api
+├── app
+├── assets
+├── components
+├── context
+├── features
+├── hooks
+├── pages
+├── routes
+├── utils
+└── App.jsx
+---
+▶️ Getting Started
+
+Clone the repository:
+
+git clone https://github.com/ArezoZargar/product-store-app.git
+
+Navigate to the project folder:
+
+cd product-store-app
+
+Install dependencies:
+
 npm install
-```
 
-### 4. Run the development server
+Start the development server:
 
-```bash
 npm run dev
-```
+
 
 ---
 
 ## 📷 Screenshots
 
-Add screenshots of the application here.
 
-Example:
+
+
 
 * Home Page
 <img width="2048" height="5500" alt="localhost_5173_" src="https://github.com/user-attachments/assets/57634914-eed0-4b46-9182-b2efc6c8dd8e" />
@@ -128,19 +202,18 @@ Example:
 
 
 
-## 📚 Learning Objectives
+📚 Learning Objectives
 
 This project demonstrates:
-
-* State management using Context API and useReducer
-* Global state management using Redux Toolkit
-* Server state management using React Query
-* Component-based architecture
-* Responsive UI Design
-* Modern React development practices
+State management using Context API and useReducer
+Global state management using Redux Toolkit
+Server state management using React Query
+Component-based architecture
+Responsive UI Design
+Modern React development practices
 
 ---
 
-## 👨‍💻 Author
+👩‍💻 Author
 
-**AREZO ZARGAR**
+Arezo Zargar
