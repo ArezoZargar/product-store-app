@@ -80,7 +80,8 @@ Add screenshots of the application here.
 Example:
 
 * Home Page
-  <img width="2880" height="4236" alt="localhost_5176_ (1)" src="https://github.com/user-attachments/assets/899d78f4-fcbe-4ac2-9d6a-a5ede0d925c4" />
+<img width="2048" height="5500" alt="localhost_5173_" src="https://github.com/user-attachments/assets/57634914-eed0-4b46-9182-b2efc6c8dd8e" />
+
   <img width="2880" height="8694" alt="localhost_5176_" src="https://github.com/user-attachments/assets/f68f0ff8-9e05-4c1f-8d64-2ca4e82a2a34" />
 
 * Product Details
