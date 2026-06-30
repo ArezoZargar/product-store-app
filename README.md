@@ -133,7 +133,7 @@ src/
 
 Clone the repository:
 ```bash
-git clone https://github.com/ArezoZargar/product-store-app.git
+https://github.com/ArezoZargar/product-store-app.git
 ```
 
 Navigate to the project folder:
